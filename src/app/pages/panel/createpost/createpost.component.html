@@ -1,0 +1,25 @@
+<div class="body-blur">
+  <div class="section-header">
+    <h2>
+      Ingresar Producto
+    </h2>
+  </div>
+  <div class="container">
+
+    <form [formGroup]="form">
+      <input #titulo formControlName="titulo" placeholder="Nombre Producto" type="text">
+      <div class="alert alert-danger" [hidden]="!alertaTitulo"> Ingrese Titulo </div>
+
+      <input #precio formControlName="precio" placeholder="Precio" type="text">
+      <div class="alert alert-danger" [hidden]="!alertaPrecio"> Ingrese Precio </div>
+      <!--<label> -->
+        <input type="file" (change)="detectFiles($event)">
+        <div class="alert alert-danger" [hidden]="!alertaImagen"> Ingrese imagen de referencia del producto </div>
+     <!--</label> -->
+      <app-tinymce #editor (onContentChanged)="logChange($event);" formControlName="editor"></app-tinymce>
+      <div class="alert alert-danger" [hidden]="!alertaNoticia"> Ingrese una descripción para el producto </div>
+   </form>
+    <button class="button" (click)="goBack()">Atras</button>
+    <button class="button" type="button" (click)="patchValue()">Agregar Producto</button> 
+  </div>
+</div> 
